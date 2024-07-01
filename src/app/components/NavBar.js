@@ -1,0 +1,37 @@
+import Image from "next/image";
+import React from "react";
+import logo from "/public/assets/logo.svg";
+import Link from "next/link";
+
+function NavBar() {
+  return (
+    <div className="fixed top-0 left-0 flex items-center justify-between w-full px-8 py-4 ">
+      <Link href="/">
+        <Image src={logo} alt="Logo" />
+      </Link>
+      <Link
+        href="/admin/login"
+        className="flex items-center gap-2 px-2 py-1 text-sm transition-all duration-200 border rounded-md border-neutral-300 hover:bg-neutral-50"
+      >
+        Admin Login{" "}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="transition-all lucide lucide-arrow-right group-hover:translate-x-1"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </Link>
+    </div>
+  );
+}
+
+export default NavBar;
