@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/firebase";
+import { auth } from "/src/firebase";
 import arrow from "/public/assets/arrow.svg";
 import Logo from "/public/assets/logo.svg";
 import Image from "next/image";
@@ -41,8 +41,8 @@ export default function AdminLogin() {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen gap-10">
       <div className="flex flex-col items-start w-full max-w-lg">
-        <Link href="/">
-          <Image src={Logo} alt="Logo" className="h-auto mb-16 w-44" />
+        <Link href="/" className="mb-16">
+          <Image src={Logo} alt="Logo" className="h-auto w-44" />
         </Link>
         <h1 className="text-2xl font-medium">Sign in</h1>
         <p className="text-sm text-[#64748b]">

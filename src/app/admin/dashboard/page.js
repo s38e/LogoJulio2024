@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { auth, firestore } from "@/firebase";
+import { auth, firestore } from "/src/firebase";
 import Image from "next/image";
 import Logo from "/public/assets/logo.svg";
 import {
@@ -57,8 +57,6 @@ const AdminDashboard = () => {
   };
 
   const handleDaySelect = (day) => {
-    console.log("Selected Day:", day); // سجل التصحيح
-
     setSelectedDay(day);
   };
 
