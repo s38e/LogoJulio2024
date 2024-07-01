@@ -1,7 +1,7 @@
 // components/UploadForm.js
 
 import { useState } from "react";
-import { storage, firestore } from "@/firebase";
+import { storage, firestore } from "/src/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useRouter } from "next/navigation";
