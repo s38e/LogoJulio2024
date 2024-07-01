@@ -3,14 +3,14 @@ import SessionProvider from "./SessionProvider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lyerz.vercel.app"),
+  metadataBase: new URL("https://logojulio.vercel.app/"),
   title: "LogoJulio - Logos competition",
   description: "Dev with LogoJulio by Saeed Khaled",
   openGraph: {
     title: "LogoJulio - Logos competition",
     description: "Dev with LogoJulio by Saeed Khaled",
     images: {
-      url: "/assets/og.jpg",
+      url: "/assets/Opengraph-Image.jpg",
       width: 1200,
       height: 630,
     },
