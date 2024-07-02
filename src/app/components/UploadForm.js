@@ -78,7 +78,7 @@ const UploadForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen gap-4">
+    <div className="flex flex-col items-center justify-center w-full gap-4 h-dvh">
       <div className="flex flex-col items-start w-full max-w-lg gap-1 px-4 mb-8 sm:p-0">
         <h1 className="text-2xl font-medium">Upload your wonderful logo</h1>
         <p className="text-sm text-[#64748b]">

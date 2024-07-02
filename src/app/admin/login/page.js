@@ -39,7 +39,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen gap-10">
+    <div className="flex flex-col items-center justify-center w-screen gap-10 h-dvh">
       <div className="flex flex-col items-start w-full max-w-lg px-4 sm:p-0">
         <Link href="/" className="mb-16">
           <Image src={Logo} alt="Logo" className="h-auto w-44" />

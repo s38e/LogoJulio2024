@@ -159,7 +159,7 @@ const AdminDashboard = () => {
           </button>
         </div>
         <button
-          className="flex items-center justify-center gap-2 px-2 py-1 text-sm font-medium text-black bg-white border rounded-lg"
+          className="flex items-center justify-between w-full gap-2 px-2 py-1 text-sm font-medium text-black bg-white border rounded-lg"
           onClick={() => signOut(auth)}
         >
           Logout <Image src={logout} alt="Logout" className="w-4 h-4 " />
@@ -170,7 +170,7 @@ const AdminDashboard = () => {
           {images.map((image) => (
             <div
               key={image.id}
-              className="relative w-full h-full overflow-hidden rounded-2xl"
+              className="relative w-full h-full overflow-hidden border rounded-2xl"
             >
               <Link
                 href={image.socialAcountLink}
