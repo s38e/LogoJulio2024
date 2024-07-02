@@ -125,9 +125,9 @@ const AdminDashboard = () => {
         </Link>
         <div className="grid w-full grid-cols-2 gap-2">
           <button
-            className={`flex-1 w-full col-start-1 col-end-3 px-3 py-2 text-sm text-black transition-all duration-200 rounded-lg ${
+            className={`flex-1 w-full col-start-1 col-end-3 px-3 py-2 text-sm text-black transition-all duration-200 rounded-lg hover:bg-green-200 ${
               selectedDay === "All Days"
-                ? "bg-green-500 text-white"
+                ? "bg-green-500 text-white hover:bg-green-500"
                 : "bg-neutral-200"
             }`}
             onClick={() => {
@@ -139,9 +139,9 @@ const AdminDashboard = () => {
           {Array.from({ length: 20 }, (_, i) => (
             <button
               key={`Day ${String(i + 1).padStart(2, "0")}`}
-              className={`flex-1 px-3 py-2 text-sm rounded-lg w-full transition-all duration-200 ${
+              className={`flex-1 px-3 py-2 text-sm rounded-lg w-full transition-all duration-200 hover:bg-green-200 ${
                 selectedDay === `Day ${String(i + 1).padStart(2, "0")}`
-                  ? "bg-green-500 text-white"
+                  ? "bg-green-500 text-white hover:bg-green-500"
                   : "bg-neutral-200"
               }`}
               onClick={() => {
@@ -152,8 +152,10 @@ const AdminDashboard = () => {
             </button>
           ))}
           <button
-            className={`flex-1 w-full col-start-1 col-end-3 px-3 py-2 text-sm text-black transition-all duration-200 rounded-lg ${
-              showOnlyFeatured ? "bg-green-500 text-white" : "bg-neutral-200"
+            className={`flex-1 w-full col-start-1 col-end-3 px-3 py-2 text-sm text-black transition-all duration-200 rounded-lg hover:bg-green-200 ${
+              showOnlyFeatured
+                ? "bg-green-500 text-white hover:bg-green-500"
+                : "bg-neutral-200"
             }`}
             onClick={() => setShowOnlyFeatured(!showOnlyFeatured)}
           >
@@ -161,7 +163,7 @@ const AdminDashboard = () => {
           </button>
         </div>
         <button
-          className="flex items-center justify-between w-full gap-2 px-2 py-1 text-sm font-medium text-black bg-white border rounded-lg"
+          className="flex items-center justify-between w-full gap-2 px-2 py-1 text-sm font-medium text-black transition-all duration-300 bg-white border rounded-lg hover:bg-neutral-100"
           onClick={() => signOut(auth)}
         >
           Logout <Image src={logout} alt="Logout" className="w-4 h-4 " />
@@ -198,17 +200,20 @@ const AdminDashboard = () => {
                   {image.day}
                 </p>
                 <div className="flex items-center justify-center gap-3">
-                  <Link href={image.socialAcountLink} className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg  cursor-pointer inline-block md:hidden">
+                  <Link
+                    href={image.socialAcountLink}
+                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg  cursor-pointer inline-block md:hidden"
+                  >
                     <Image src={profile} alt="Profile" className="w-auto h-4" />
                   </Link>
                   <div
-                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer"
+                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all duration-300 md:hover:scale-110"
                     onClick={() => deleteImage(image.id)}
                   >
                     <Image src={Delete} alt="Delete" className="w-auto h-4" />
                   </div>
                   <div
-                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer"
+                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all duration-300 md:hover:scale-110"
                     onClick={() => toggleFeature(image.id)}
                   >
                     <Image
