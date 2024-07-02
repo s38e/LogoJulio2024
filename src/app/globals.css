@@ -8,11 +8,11 @@ body {
   overflow: hidden;
 }
 
-.file-input {
+/* .file-input {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-}
+} */
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -21,4 +21,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #06dcff;
   border-radius: 10rem;
+}
+.react-select__control {
+  @apply bg-red-500;
 }

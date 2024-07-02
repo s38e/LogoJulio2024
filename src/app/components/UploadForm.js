@@ -7,11 +7,29 @@ import Image from "next/image";
 import upload from "/public/assets/upload.svg";
 import Select from "react-select";
 
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    boxShadow: "none !important",
+    borderRadius: "0.5rem",
+    minHeight: "38px",
+    cursor: "pointer",
+    transition: "0.3s",
+    borderColor: state.isFocused ? "#000" : "rgb(209 213 219)",
+    "&:hover": { border: "1px solid #000" },
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    cursor: "pointer",
+  }),
+};
+
 const UploadForm = () => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [acountLinkFocused, setAcountLinkFocused] = useState(false);
   const [selectedDay, setSelectedDay] = useState(null);
   const [socialAcountLink, setSocialAcountLink] = useState("");
   const router = useRouter();
@@ -88,10 +106,11 @@ const UploadForm = () => {
       </div>
       <div className="flex flex-col w-full max-w-lg gap-4 px-4 sm:p-0 ">
         <input
-          className="w-full px-3 py-2 text-sm border border-gray-100 rounded-lg file-input file-input-bordered "
+          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg file-input file-input-bordered "
           type="file"
           onChange={handleFileChange}
           disabled={uploading}
+          required
         />
         <Select
           className="mt-2 text-sm rounded-sm"
@@ -100,14 +119,20 @@ const UploadForm = () => {
           onChange={(selectedOption) => setSelectedDay(selectedOption)}
           placeholder="Select Day"
           isDisabled={uploading}
+          styles={customStyles}
         />
         <input
-          className="w-full px-3 py-2 text-sm border border-gray-100 rounded-lg outline-none file-input file-input-bordered"
+          className={`w-full px-3 py-2 text-sm border rounded-lg outline-none file-input file-input-bordered hover:border-black transition-all duration-300 ${
+            acountLinkFocused ? "border-black" : "border-gray-300"
+          }`}
           type="text"
           placeholder="Enter Social Profile Link"
           value={socialAcountLink}
           onChange={(e) => setSocialAcountLink(e.target.value)}
           disabled={uploading}
+          required
+          onFocus={() => setAcountLinkFocused(true)}
+          onBlur={() => setAcountLinkFocused(false)}
         />
         <button
           className="flex items-center justify-center w-full gap-2 px-3 py-2 text-white transition-all duration-300 bg-black rounded-lg cursor-pointer disabled:cursor-not-allowed hover:bg-neutral-800"
