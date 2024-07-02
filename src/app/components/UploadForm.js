@@ -314,7 +314,7 @@ const UploadForm = () => {
       </div>
       <div className="flex flex-col w-full max-w-lg gap-4 px-4 sm:p-0 ">
         <div>
-          <label className="text-sm font-medium">Upload your logo</label>
+          <label className="text-sm font-medium">Select your logo</label>
 
           <input
             className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg file-input file-input-bordered "
@@ -326,7 +326,7 @@ const UploadForm = () => {
           />
         </div>
         <div>
-          <label className="text-sm font-medium">Upload your .ai file</label>
+          <label className="text-sm font-medium">Select your .ai file</label>
           <input
             className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg file-input file-input-bordered "
             type="file"
@@ -378,7 +378,7 @@ const UploadForm = () => {
             <button
               onClick={() => {
                 setUploadSuccess(false);
-                router.replace(router.asPath);
+                window.location.reload();
               }}
               className="w-full px-3 py-2 text-sm text-white bg-black rounded-lg"
             >
