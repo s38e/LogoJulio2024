@@ -206,88 +206,110 @@ const AdminDashboard = () => {
           Logout <Image src={logout} alt="Logout" className="w-4 h-4 " />
         </button>
       </div>
-      <div className="flex flex-col items-center justify-start flex-1 w-full h-full gap-4 py-8 overflow-y-scroll">
-        <div className="grid w-full grid-cols-1 gap-4 px-4 md:px-8 md:grid-cols-2 2xl:grid-cols-3">
-          {images.map((image) => (
-            <div
-              key={image.id}
-              className="relative w-full h-full overflow-hidden border rounded-2xl"
-            >
-              <Link
-                href={image.socialAcountLink}
-                target="_blank"
-                className="absolute top-0 left-0 z-10  items-center justify-center w-full h-full text-white transition-all duration-300 bg-[rgba(0,0,0,0.5)] backdrop-blur-lg opacity-0 hover:opacity-100 hidden md:flex"
-              >
-                Visit Profile
-              </Link>
+      <div
+        className={`flex flex-col items-center flex-1 w-full h-full gap-4 py-8 overflow-y-scroll ${
+          images.length === 0 ? "justify-center" : "justify-start"
+        }`}
+      >
+        {images.length === 0 ? (
+          <p className="text-lg font-medium text-center text-black">
+            There are no logos yet!
+          </p>
+        ) : (
+          <div className="grid w-full grid-cols-1 gap-4 px-4 md:px-8 md:grid-cols-2 2xl:grid-cols-3">
+            {images.map((image) => (
               <div
-                className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block top-2 right-2 absolute z-10 border border-neutral-300 md:hover:scale-110 transition-all duration-300"
-                onClick={() => handleImageClick(image.url)}
+                key={image.id}
+                className="relative w-full h-full overflow-hidden border rounded-2xl"
               >
-                <Image src={scale} alt="scale" className="w-auto h-4" />
-              </div>
-              <div
-                className={`absolute flex items-center w-[calc(100% - 32px)] bottom-2 left-2 right-2 z-10 ${
-                  selectedDay === "All Days" || !showOnlyFeatured
-                    ? "justify-between"
-                    : " justify-end"
-                }`}
-              >
-                <p
-                  className={`px-4 h-full py-2 text-xs leading-none text-neutral-300 bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block border border-neutral-300 ${
+                <Link
+                  href={image.socialAcountLink}
+                  target="_blank"
+                  className="absolute top-0 left-0 z-10  items-center justify-center w-full h-full text-white transition-all duration-300 bg-[rgba(0,0,0,0.5)] backdrop-blur-lg opacity-0 hover:opacity-100 hidden md:flex"
+                >
+                  Visit Profile
+                </Link>
+                <div
+                  className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block top-2 right-2 absolute z-10 border border-neutral-300 md:hover:scale-110 transition-all duration-300"
+                  onClick={() => handleImageClick(image.url)}
+                >
+                  <Image
+                    src={scale}
+                    alt="scale"
+                    className="w-auto h-4 pointer-events-none"
+                  />
+                </div>
+                <div
+                  className={`absolute flex items-center w-[calc(100% - 32px)] bottom-2 left-2 right-2 z-10 ${
                     selectedDay === "All Days" || !showOnlyFeatured
-                      ? ""
-                      : "hidden"
+                      ? "justify-between"
+                      : " justify-end"
                   }`}
                 >
-                  {image.day}
-                </p>
-                <div className="flex items-center justify-center gap-3">
-                  <Link
-                    href={image.socialAcountLink}
-                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block md:hidden border border-neutral-300"
+                  <p
+                    className={`px-4 h-full py-2 text-xs leading-none text-neutral-300 bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block border border-neutral-300 ${
+                      selectedDay === "All Days" || !showOnlyFeatured
+                        ? ""
+                        : "hidden"
+                    }`}
                   >
-                    <Image src={profile} alt="Profile" className="w-auto h-4" />
-                  </Link>
-                  <div
-                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
-                    onClick={() => deleteImage(image.id)}
-                  >
-                    <Image src={Delete} alt="Delete" className="w-auto h-4" />
-                  </div>
-                  <div
-                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
-                    onClick={() => handleDownload(image.aiUrl)}
-                  >
-                    <Image
-                      src={downloadIcon}
-                      alt="يownload"
-                      className="w-auto h-4"
-                    />
-                  </div>
-                  <div
-                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
-                    onClick={() => toggleFeature(image.id)}
-                  >
-                    <Image
-                      src={image.featured ? addedFeature : addFeature}
-                      alt={image.featured ? "Remove Feature" : "Add Feature"}
-                      className="w-auto h-4"
-                    />
+                    {image.day}
+                  </p>
+                  <div className="flex items-center justify-center gap-3">
+                    <Link
+                      href={image.socialAcountLink}
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block md:hidden border border-neutral-300"
+                    >
+                      <Image
+                        src={profile}
+                        alt="Profile"
+                        className="w-auto h-4 pointer-events-none"
+                      />
+                    </Link>
+                    <div
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
+                      onClick={() => deleteImage(image.id)}
+                    >
+                      <Image
+                        src={Delete}
+                        alt="Delete"
+                        className="w-auto h-4 pointer-events-none"
+                      />
+                    </div>
+                    <div
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
+                      onClick={() => handleDownload(image.aiUrl)}
+                    >
+                      <Image
+                        src={downloadIcon}
+                        alt="Download"
+                        className="w-auto h-4 pointer-events-none"
+                      />
+                    </div>
+                    <div
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
+                      onClick={() => toggleFeature(image.id)}
+                    >
+                      <Image
+                        src={image.featured ? addedFeature : addFeature}
+                        alt={image.featured ? "Remove Feature" : "Add Feature"}
+                        className="w-auto h-4 pointer-events-none"
+                      />
+                    </div>
                   </div>
                 </div>
+                <Image
+                  src={image.url}
+                  alt={`Logo ${image.day}`}
+                  width={1080}
+                  height={1080}
+                  // quality={100}
+                  className="object-cover w-full h-full aspect-square"
+                />
               </div>
-              <Image
-                src={image.url}
-                alt={`Logo ${image.day}`}
-                width={1080}
-                height={1080}
-                // quality={100}
-                className="object-cover w-full h-full aspect-square"
-              />
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
