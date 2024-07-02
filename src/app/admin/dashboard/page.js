@@ -5,6 +5,7 @@ import Image from "next/image";
 import Logo from "/public/assets/logo.svg";
 import Delete from "/public/assets/delete.svg";
 import logout from "/public/assets/logout.svg";
+import downloadIcon from "/public/assets/download.svg";
 import profile from "/public/assets/profile.svg";
 import scale from "/public/assets/scale.svg";
 import close from "/public/assets/close.svg";
@@ -47,7 +48,7 @@ const AdminDashboard = () => {
   }, [router]);
 
   useEffect(() => {
-    let q = query(collection(firestore, "images"));
+    let q = query(collection(firestore, "Logos"));
     if (selectedDay !== "All Days") {
       q = query(q, where("day", "==", selectedDay));
     }
@@ -63,7 +64,7 @@ const AdminDashboard = () => {
   }, [selectedDay, showOnlyFeatured]);
 
   const toggleFeature = async (imageId) => {
-    const imageRef = doc(firestore, "images", imageId);
+    const imageRef = doc(firestore, "Logos", imageId);
     const imageDoc = await getDoc(imageRef);
     if (imageDoc.exists()) {
       const currentFeaturedStatus = imageDoc.data().featured;
@@ -80,7 +81,7 @@ const AdminDashboard = () => {
 
   const deleteImage = async (imageId) => {
     if (window.confirm("Are you sure you want to delete this image?")) {
-      const imageRef = doc(firestore, "images", imageId);
+      const imageRef = doc(firestore, "Logos", imageId);
       await deleteDoc(imageRef);
     }
   };
@@ -95,6 +96,15 @@ const AdminDashboard = () => {
 
   const handleCloseFullScreen = () => {
     setFullScreenImage(null);
+  };
+
+  const handleDownload = (imageUrl) => {
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    link.setAttribute("download", true);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -148,7 +158,7 @@ const AdminDashboard = () => {
         }`}
       >
         <Link href="/">
-          <Image src={Logo} alt="Logo" />
+          <Image src={Logo} alt="Logo" className="w-auto h-8" />
         </Link>
         <div className="grid w-full grid-cols-2 gap-2">
           <button
@@ -244,6 +254,16 @@ const AdminDashboard = () => {
                     onClick={() => deleteImage(image.id)}
                   >
                     <Image src={Delete} alt="Delete" className="w-auto h-4" />
+                  </div>
+                  <div
+                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
+                    onClick={() => handleDownload(image.aiUrl)}
+                  >
+                    <Image
+                      src={downloadIcon}
+                      alt="يownload"
+                      className="w-auto h-4"
+                    />
                   </div>
                   <div
                     className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
