@@ -86,7 +86,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="relative flex items-start justify-center w-screen h-screen overflow-hidden ">
+    <div className="relative flex items-start justify-center w-screen overflow-hidden h-dvh ">
       <div
         className={`absolute z-50 flex flex-col top-4 left-4 transition-all duration-500 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg aspect-square p-4 items-center justify-center rounded-2xl lg:hidden ${
           menuActive ? "gap-0" : "gap-[6px]"
@@ -114,7 +114,7 @@ const AdminDashboard = () => {
         }`}
       ></div>
       <div
-        className={`top-0 left-0 z-40 flex flex-col items-center justify-between h-screen px-8 py-8 border-r bg-neutral-50 lg:translate-x-0 w-96 fixed lg:relative transition-all duration-500  ${
+        className={`top-0 left-0 z-40 flex flex-col items-center justify-between h-dvh px-8 py-8 border-r bg-neutral-50 lg:translate-x-0 w-96 fixed lg:relative transition-all duration-500  ${
           menuActive ? "translate-x-0 delay-150" : "-translate-x-full delay-0"
         }`}
       >
