@@ -216,9 +216,10 @@ const AdminDashboard = () => {
               </div>
               <Image
                 src={image.url}
-                alt={`Uploaded ${image.id}`}
-                width={300}
-                height={300}
+                alt={`Logo ${image.day}`}
+                width={1080}
+                height={1080}
+                // quality={100}
                 className="object-cover w-full h-full aspect-square"
               />
             </div>
