@@ -88,21 +88,25 @@ const AdminDashboard = () => {
   return (
     <div className="relative flex items-start justify-center w-screen h-screen overflow-hidden ">
       <div
-        className={`absolute z-50 flex flex-col gap-[6px] top-[16px] left-8 transition-all duration-500 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg aspect-square p-4 items-center justify-center rounded-2xl lg:hidden ${
-          menuActive ? "gap-0" : ""
+        className={`absolute z-50 flex flex-col top-[16px] left-8 transition-all duration-500 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg aspect-square p-4 items-center justify-center rounded-2xl lg:hidden ${
+          menuActive ? "gap-0" : "gap-[6px]"
         }`}
         onClick={toggleMenu}
       >
         <span
           className={`w-6 h-[2px] bg-black transition-all duration-500 ${
-            menuActive ? "rotate-45 translate-y-[1px]" : ""
+            menuActive
+              ? "rotate-45 translate-y-[1px]"
+              : "rotate-0 translate-y-0"
           }`}
         ></span>
         <span
           className={`w-6 h-[2px] bg-black transition-all duration-500 ${
-            menuActive ? "-rotate-45 -translate-y-[1px]" : ""
+            menuActive
+              ? "-rotate-45 -translate-y-[1px]"
+              : "rotate-0 translate-y-0"
           }`}
-        ></span>{" "}
+        ></span>
       </div>
       <div
         className={`absolute inset-0 w-screen z-20 h-dvh bg-[rgba(0,0,0,0.5)] backdrop-blur-lg transition-all duration-500 ${
@@ -169,7 +173,7 @@ const AdminDashboard = () => {
               className="relative w-full h-full overflow-hidden rounded-2xl"
             >
               <Link
-                href={image.url}
+                href={image.socialAcountLink}
                 target="_blank"
                 className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full text-white transition-all duration-300 bg-[rgba(0,0,0,0.5)] backdrop-blur-lg opacity-0 hover:opacity-100"
               >
