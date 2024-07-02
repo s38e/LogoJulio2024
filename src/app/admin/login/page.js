@@ -40,7 +40,7 @@ export default function AdminLogin() {
 
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen gap-10">
-      <div className="flex flex-col items-start w-full max-w-lg">
+      <div className="flex flex-col items-start w-full max-w-lg px-4 sm:p-0">
         <Link href="/" className="mb-16">
           <Image src={Logo} alt="Logo" className="h-auto w-44" />
         </Link>
@@ -50,7 +50,7 @@ export default function AdminLogin() {
         </p>
       </div>
       <form
-        className="flex flex-col items-start justify-center w-full max-w-lg gap-4"
+        className="flex flex-col items-start justify-center w-full max-w-lg gap-4 px-4 sm:p-0"
         onSubmit={handleLogin}
       >
         <input

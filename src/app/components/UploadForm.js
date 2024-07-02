@@ -1,5 +1,3 @@
-// components/UploadForm.js
-
 import { useState } from "react";
 import { storage, firestore } from "/src/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -7,15 +5,15 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import upload from "/public/assets/upload.svg";
-import Select from "react-select"; // Import React Select library
+import Select from "react-select";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
   const [uploadSuccess, setUploadSuccess] = useState(false);
-  const [selectedDay, setSelectedDay] = useState(null); // State to track selected day
-  const [socialAcountLink, setSocialAcountLink] = useState(""); // State to track Facebook link
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [socialAcountLink, setSocialAcountLink] = useState("");
   const router = useRouter();
 
   const daysOptions = [
@@ -39,7 +37,6 @@ const UploadForm = () => {
     { value: "Day 18", label: "Day 18" },
     { value: "Day 19", label: "Day 19" },
     { value: "Day 20", label: "Day 20" },
-    // Add more day options as needed
   ];
 
   const handleUpload = async () => {
@@ -57,13 +54,13 @@ const UploadForm = () => {
         await addDoc(imagesCollectionRef, {
           url: fileUrl,
           createdAt: serverTimestamp(),
-          day: selectedDay.value, // Save selected day value with the image
-          socialAcountLink, // Save Facebook link with the image
+          day: selectedDay.value,
+          socialAcountLink,
         });
 
-        setFile(null); // Reset file state after successful upload
-        setSelectedDay(null); // Reset selected day state after successful upload
-        setSocialAcountLink(""); // Reset Facebook link state after successful upload
+        setFile(null);
+        setSelectedDay(null);
+        setSocialAcountLink("");
         setUploading(false);
         setUploadSuccess(true);
       } catch (error) {
@@ -82,22 +79,22 @@ const UploadForm = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen gap-4">
-      <div className="flex flex-col items-start w-full max-w-lg gap-1 mb-8">
+      <div className="flex flex-col items-start w-full max-w-lg gap-1 px-4 mb-8 sm:p-0">
         <h1 className="text-2xl font-medium">Upload your wonderful logo</h1>
         <p className="text-sm text-[#64748b]">
           Uploading your logo here gives you a great chance of being seen by the
           judging panel
         </p>
       </div>
-      <div className="flex flex-col w-full max-w-lg gap-4">
+      <div className="flex flex-col w-full max-w-lg gap-4 px-4 sm:p-0 ">
         <input
-          className="w-full px-3 py-2 border border-gray-100 rounded-lg file-input file-input-bordered "
+          className="w-full px-3 py-2 text-sm border border-gray-100 rounded-lg file-input file-input-bordered "
           type="file"
           onChange={handleFileChange}
           disabled={uploading}
         />
         <Select
-          className="mt-2 rounded-sm"
+          className="mt-2 text-sm rounded-sm"
           options={daysOptions}
           value={selectedDay}
           onChange={(selectedOption) => setSelectedDay(selectedOption)}
@@ -105,7 +102,7 @@ const UploadForm = () => {
           isDisabled={uploading}
         />
         <input
-          className="w-full px-3 py-2 border border-gray-100 rounded-lg outline-none file-input file-input-bordered"
+          className="w-full px-3 py-2 text-sm border border-gray-100 rounded-lg outline-none file-input file-input-bordered"
           type="text"
           placeholder="Enter Social Profile Link"
           value={socialAcountLink}
@@ -130,16 +127,15 @@ const UploadForm = () => {
             <button
               onClick={() => {
                 setUploadSuccess(false);
-                router.replace(router.asPath); // Reload to refresh image list
+                router.replace(router.asPath);
               }}
-              className="w-full px-3 py-2 text-white bg-black rounded-lg"
+              className="w-full px-3 py-2 text-sm text-white bg-black rounded-lg"
             >
               Close
             </button>
           </div>
         </div>
       )}
-
       {uploadError && (
         <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-opacity-75 bg-neutral-800">
           <div className="flex flex-col items-center gap-2 p-8 bg-white rounded-lg">
@@ -149,7 +145,7 @@ const UploadForm = () => {
             <p className="text-red-600">{uploadError}</p>
             <button
               onClick={() => setUploadError("")}
-              className="w-full px-3 py-2 mt-4 text-white bg-black rounded-lg"
+              className="w-full px-3 py-2 mt-4 text-sm text-white bg-black rounded-lg"
             >
               Close
             </button>
