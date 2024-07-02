@@ -187,7 +187,7 @@ const AdminDashboard = () => {
                 }`}
               >
                 <p
-                  className={`px-4 h-full py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block ${
+                  className={`px-4 h-full py-2 text-xs leading-none text-neutral-300 bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block ${
                     selectedDay === "All Days" || !showOnlyFeatured
                       ? ""
                       : "hidden"
