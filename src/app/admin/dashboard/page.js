@@ -7,6 +7,7 @@ import Delete from "/public/assets/delete.svg";
 import logout from "/public/assets/logout.svg";
 import profile from "/public/assets/profile.svg";
 import scale from "/public/assets/scale.svg";
+import close from "/public/assets/close.svg";
 import addedFeature from "/public/assets/addedFeature.svg";
 import addFeature from "/public/assets/addFeature.svg";
 import { useRouter } from "next/navigation";
@@ -31,6 +32,7 @@ const AdminDashboard = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [user, setUser] = useState(null);
   const router = useRouter();
+  const [fullScreenImage, setFullScreenImage] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -87,8 +89,33 @@ const AdminDashboard = () => {
     setMenuActive(!menuActive);
   };
 
+  const handleImageClick = (imageUrl) => {
+    setFullScreenImage(imageUrl);
+  };
+
+  const handleCloseFullScreen = () => {
+    setFullScreenImage(null);
+  };
+
   return (
     <div className="relative flex items-start justify-center w-screen overflow-hidden h-dvh ">
+      {fullScreenImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center w-screen h-screen bg-black bg-opacity-75">
+          <button
+            onClick={handleCloseFullScreen}
+            className="absolute top-4 right-4 aspect-square bg-[rgba(0,0,0,0.5)] backdrop-blur-lg rounded-2xl p-4"
+          >
+            <Image src={close} alt="Close" className="w-6 h-6" />
+          </button>
+          <Image
+            src={fullScreenImage}
+            alt="Full Screen"
+            width={1080}
+            height={1080}
+            className="object-contain w-full h-full"
+          />
+        </div>
+      )}
       <div
         className={`absolute z-50 flex flex-col top-4 left-4 transition-all duration-500 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg aspect-square p-4 items-center justify-center rounded-2xl lg:hidden ${
           menuActive ? "gap-0" : "gap-[6px]"
@@ -184,6 +211,12 @@ const AdminDashboard = () => {
                 Visit Profile
               </Link>
               <div
+                className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block top-2 right-2 absolute z-10 border border-neutral-300 md:hover:scale-110 transition-all duration-300"
+                onClick={() => handleImageClick(image.url)}
+              >
+                <Image src={scale} alt="scale" className="w-auto h-4" />
+              </div>
+              <div
                 className={`absolute flex items-center w-[calc(100% - 32px)] bottom-2 left-2 right-2 z-10 ${
                   selectedDay === "All Days" || !showOnlyFeatured
                     ? "justify-between"
@@ -191,7 +224,7 @@ const AdminDashboard = () => {
                 }`}
               >
                 <p
-                  className={`px-4 h-full py-2 text-xs leading-none text-neutral-300 bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block ${
+                  className={`px-4 h-full py-2 text-xs leading-none text-neutral-300 bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block border border-neutral-300 ${
                     selectedDay === "All Days" || !showOnlyFeatured
                       ? ""
                       : "hidden"
@@ -202,18 +235,18 @@ const AdminDashboard = () => {
                 <div className="flex items-center justify-center gap-3">
                   <Link
                     href={image.socialAcountLink}
-                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg  cursor-pointer inline-block md:hidden"
+                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block md:hidden border border-neutral-300"
                   >
                     <Image src={profile} alt="Profile" className="w-auto h-4" />
                   </Link>
                   <div
-                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all duration-300 md:hover:scale-110"
+                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
                     onClick={() => deleteImage(image.id)}
                   >
                     <Image src={Delete} alt="Delete" className="w-auto h-4" />
                   </div>
                   <div
-                    className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all duration-300 md:hover:scale-110"
+                    className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
                     onClick={() => toggleFeature(image.id)}
                   >
                     <Image
