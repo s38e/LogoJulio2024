@@ -5,6 +5,8 @@ import Image from "next/image";
 import Logo from "/public/assets/logo.svg";
 import Delete from "/public/assets/delete.svg";
 import logout from "/public/assets/logout.svg";
+import profile from "/public/assets/profile.svg";
+import scale from "/public/assets/scale.svg";
 import addedFeature from "/public/assets/addedFeature.svg";
 import addFeature from "/public/assets/addFeature.svg";
 import { useRouter } from "next/navigation";
@@ -175,7 +177,7 @@ const AdminDashboard = () => {
               <Link
                 href={image.socialAcountLink}
                 target="_blank"
-                className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full text-white transition-all duration-300 bg-[rgba(0,0,0,0.5)] backdrop-blur-lg opacity-0 hover:opacity-100"
+                className="absolute top-0 left-0 z-10  items-center justify-center w-full h-full text-white transition-all duration-300 bg-[rgba(0,0,0,0.5)] backdrop-blur-lg opacity-0 hover:opacity-100 hidden md:flex"
               >
                 Visit Profile
               </Link>
@@ -196,6 +198,9 @@ const AdminDashboard = () => {
                   {image.day}
                 </p>
                 <div className="flex items-center justify-center gap-3">
+                  <Link href={image.socialAcountLink} className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg  cursor-pointer inline-block md:hidden">
+                    <Image src={profile} alt="Profile" className="w-auto h-4" />
+                  </Link>
                   <div
                     className="px-4 py-2 text-xs leading-none text-white bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer"
                     onClick={() => deleteImage(image.id)}
