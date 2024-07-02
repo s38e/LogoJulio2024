@@ -166,7 +166,7 @@ const AdminDashboard = () => {
         </button>
       </div>
       <div className="flex flex-col items-center justify-start flex-1 w-full h-full gap-4 py-8 overflow-y-scroll">
-        <div className="grid w-full grid-cols-1 gap-4 px-8 md:grid-cols-2 2xl:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-4 px-4 md:px-8 md:grid-cols-2 2xl:grid-cols-3">
           {images.map((image) => (
             <div
               key={image.id}
