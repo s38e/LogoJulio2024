@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import logo from "/public/assets/logo.svg";
-import star from "/public/assets/star.svg";
+import Thunderbolt from "/public/assets/Thunderbolt.svg";
 import Link from "next/link";
 
 function NavBar() {
@@ -15,7 +15,8 @@ function NavBar() {
           href="/inspiration"
           className="flex items-center gap-2 px-2 py-1 text-sm transition-all duration-200 border rounded-md border-neutral-300 hover:bg-neutral-50"
         >
-          Inspiration <Image src={star} alt="Star" className="w-4 h-4" />
+          Inspiration{" "}
+          <Image src={Thunderbolt} alt="Thunderbolt" className="w-4 h-4" />
         </Link>
         <Link
           href="/admin/login"

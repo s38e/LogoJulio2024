@@ -649,7 +649,7 @@ const AdminDashboard = () => {
                   <div className="flex items-center justify-center gap-3">
                     <Link
                       href={image.socialAcountLink}
-                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg"
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block md:hidden cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg"
                     >
                       <Image
                         src={profile}
