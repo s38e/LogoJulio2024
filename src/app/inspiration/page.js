@@ -161,27 +161,38 @@ function Inspiration() {
             Featured Logos
           </button>
         </div>
-        <Link
-          className="flex items-center justify-between w-full gap-2 px-2 py-1 text-sm font-medium text-black transition-all duration-300 bg-white border rounded-lg hover:bg-neutral-100"
-          href="/"
-        >
-          Back to home{" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-all lucide lucide-arrow-right group-hover:translate-x-1"
+        <div className="flex flex-col items-center w-full gap-3">
+          <Link
+            className="flex items-center justify-between w-full gap-2 px-2 py-1 text-sm font-medium text-black transition-all duration-300 bg-white border rounded-lg hover:bg-neutral-100"
+            href="/"
           >
-            <path d="M5 12h14"></path>
-            <path d="m12 5 7 7-7 7"></path>
-          </svg>
-        </Link>
+            Back to home{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="transition-all lucide lucide-arrow-right group-hover:translate-x-1"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </Link>
+          <p className="text-xs text-neutral-600">
+            Made with love by{" "}
+            <Link
+              href={"https://web.facebook.com/S3eedKh3led"}
+              className="font-medium"
+            >
+              Saeed Khaled
+            </Link>
+          </p>
+        </div>
       </div>
       <div
         className={`flex flex-col items-center flex-1 w-full h-full gap-4 py-8 overflow-y-scroll ${

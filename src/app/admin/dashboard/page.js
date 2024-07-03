@@ -590,12 +590,24 @@ const AdminDashboard = () => {
             Featured Logos
           </button>
         </div>
-        <button
-          className="flex items-center justify-between w-full gap-2 px-2 py-1 text-sm font-medium text-black transition-all duration-300 bg-white border rounded-lg hover:bg-neutral-100"
-          onClick={() => signOut(auth)}
-        >
-          Logout <Image src={logout} alt="Logout" className="w-4 h-4 " />
-        </button>
+
+        <div className="flex flex-col items-center w-full gap-3">
+          <button
+            className="flex items-center justify-between w-full gap-2 px-2 py-1 text-sm font-medium text-black transition-all duration-300 bg-white border rounded-lg hover:bg-neutral-100"
+            onClick={() => signOut(auth)}
+          >
+            Logout <Image src={logout} alt="Logout" className="w-4 h-4 " />
+          </button>
+          <p className="text-xs text-neutral-600">
+            Made with love by{" "}
+            <Link
+              href={"https://web.facebook.com/S3eedKh3led"}
+              className="font-medium"
+            >
+              Saeed Khaled
+            </Link>
+          </p>
+        </div>
       </div>
       <div
         className={`flex flex-col items-center flex-1 w-full h-full gap-4 py-8 overflow-y-scroll ${
