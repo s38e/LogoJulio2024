@@ -89,7 +89,7 @@ function Inspiration() {
         </div>
       )}
       <div
-        className={`absolute z-50 flex flex-col top-4 left-4 transition-all duration-500 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg aspect-square p-4 items-center justify-center rounded-2xl lg:hidden ${
+        className={`absolute z-50 flex flex-col top-4 left-4 transition-all duration-500 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg aspect-square p-2 sm:p-4 items-center justify-center rounded-xl sm:rounded-2xl lg:hidden ${
           menuActive ? "gap-0" : "gap-[6px]"
         }`}
         onClick={toggleMenu}
