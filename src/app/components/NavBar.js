@@ -15,13 +15,13 @@ function NavBar() {
           href="/inspiration"
           className="flex items-center gap-2 px-2 py-1 text-sm transition-all duration-200 border rounded-md border-neutral-300 hover:bg-neutral-50"
         >
-          For inspiration <Image src={star} alt="Star" className="w-4 h-4" />
+          Inspiration <Image src={star} alt="Star" className="w-4 h-4" />
         </Link>
         <Link
           href="/admin/login"
           className="flex items-center gap-2 px-2 py-1 text-sm transition-all duration-200 border rounded-md border-neutral-300 hover:bg-neutral-50"
         >
-          Admin Login{" "}
+          Login{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
