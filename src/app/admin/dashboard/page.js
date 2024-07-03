@@ -544,7 +544,7 @@ const AdminDashboard = () => {
         }`}
       ></div>
       <div
-        className={`top-0 left-0 z-40 flex flex-col items-center justify-between h-dvh px-8 py-8 border-r bg-neutral-50 lg:translate-x-0 w-96 fixed lg:relative transition-all duration-500  ${
+        className={`top-0 left-0 z-40 flex flex-col items-center justify-between h-dvh px-8 py-8 border-r bg-neutral-50 lg:translate-x-0 w-full sm:w-96 fixed lg:relative transition-all duration-500  ${
           menuActive ? "translate-x-0 delay-150" : "-translate-x-full delay-0"
         }`}
       >
@@ -621,7 +621,7 @@ const AdminDashboard = () => {
                   Visit Profile
                 </Link>
                 <div
-                  className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block top-2 right-2 absolute z-10 border border-neutral-300 md:hover:scale-110 transition-all duration-300"
+                  className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block top-2 right-2 absolute z-10 border border-neutral-300 md:hover:scale-110 transition-all duration-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg"
                   onClick={() => handleImageClick(image)}
                 >
                   <Image
@@ -638,7 +638,7 @@ const AdminDashboard = () => {
                   }`}
                 >
                   <p
-                    className={`px-4 h-full py-2 text-xs leading-none text-neutral-300 bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block border border-neutral-300 ${
+                    className={`px-4 h-full py-2 text-xs leading-none text-neutral-300 bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block border border-neutral-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg  ${
                       selectedDay === "All Days" || !showOnlyFeatured
                         ? ""
                         : "hidden"
@@ -649,7 +649,7 @@ const AdminDashboard = () => {
                   <div className="flex items-center justify-center gap-3">
                     <Link
                       href={image.socialAcountLink}
-                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg cursor-pointer inline-block md:hidden border border-neutral-300"
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg"
                     >
                       <Image
                         src={profile}
@@ -658,7 +658,7 @@ const AdminDashboard = () => {
                       />
                     </Link>
                     <div
-                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg"
                       onClick={() => deleteImage(image.id)}
                     >
                       <Image
@@ -668,7 +668,7 @@ const AdminDashboard = () => {
                       />
                     </div>
                     <div
-                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg"
                       onClick={() => handleDownload(image.aiUrl)}
                     >
                       <Image
@@ -678,7 +678,7 @@ const AdminDashboard = () => {
                       />
                     </div>
                     <div
-                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300"
+                      className="px-4 py-2 leading-none bg-[rgba(255,255,255,0.5)] rounded-xl backdrop-blur-lg inline-block cursor-pointer transition-all border duration-300 md:hover:scale-110 border-neutral-300 max-[370px]:px-2 max-[370px]:py-1 max-[370px]:rounded-lg"
                       onClick={() => toggleFeature(image.id)}
                     >
                       <Image
